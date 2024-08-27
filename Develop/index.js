@@ -1,6 +1,6 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
-const fs = require('fs');
+const fs = require('node:fs');
 const generateMarkdown = require('./generateMarkdown');
 const { default: Choices } = require('inquirer/lib/objects/choices');
 
@@ -61,10 +61,37 @@ const questions = [
  
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {}
+function writeToFile(fileName, data) {
+    fs.writeFile(fileName, data, err => {
+        if (err) {
+          console.error(err);
+        } else {
+          console.log("file written successfully");
+        }
+      });
+}
 
 // TODO: Create a function to initialize app
-function init() {}
+async function init() {
+    try {
+        // Prompts the user and waits for the answers
+        const answers = await inquirer.prompt(questions);
+    
+        // Passes the answers to the generateMarkdown function
+        const markdown = generateMarkdown(answers);
+    
+        // Feeds markDown into writeToFile function
+        writeToFile('README.md', markdown);
+    
+        console.log('README.md has been generated successfully.');
+      } catch (error) {
+        if (error.isTtyError) {
+          console.log("Prompt couldn't be rendered in the current environment");
+        } else {
+          console.log("Something else went wrong: ", error);
+        }
+      }
+}
 
 // Function call to initialize app
 init();
