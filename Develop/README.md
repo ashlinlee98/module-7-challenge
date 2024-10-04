@@ -31,6 +31,9 @@ Link: (https://img.shields.io/badge/License-MIT.svg)
   ## Tests
   Run it in your git bash. It's pretty straight forward. It just asks you questions and then writes that into your REAMDME.
 
+  ## Submission Video
+  https://drive.google.com/file/d/1uxOsPDz8ikRmS92weG-656wE5UxR4iah/view?usp=sharing
+
   ## Questions
   If you have any questions, feel free to reach out to ashlinlee98 via [GitHub](ashlinlee98@github.com) or email at ex@email.com.
   
